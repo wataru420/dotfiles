@@ -1,0 +1,65 @@
+#lang
+defc1 off
+
+#shell
+shell bash
+
+#escape
+escape ^Tt
+
+#startup
+startup_message off
+
+caption splitonly "%?%F%{= bW}%:%{= wk}%?%2n%f%07=%t%="
+#最終行にウィンドウ一覧を表示
+hardstatus alwayslastline "%{= Wb}[%m/%d %02c] %016=%{= WK}%-w%50>%{= bW}%n %t%{-}%+w%-0< %="
+#screenが死んでもプロセスを生かす
+autodetach on
+
+#bufferサイズ
+defscrollback 10000
+
+#default screens
+chdir
+
+#別ウィンドウ有効化
+altscreen on
+
+#Screenセーバー
+idle 1200
+blankerprg /usr/bin/fortune starwars
+
+#window mode (like vim)
+bind w eval 'echo "Window mode: "' 'command -c cwindow'
+bind -c cwindow s eval 'split' 'focus' 'select 0' 'command -c cwindow'
+bind -c cwindow v eval 'split -v' 'focus' 'select 0' 'command -c cwindow'
+bind -c cwindow o eval 'only' 'command -c cwindow'
+bind -c cwindow c eval 'remove' 'command -c cwindow'
+bind -c cwindow w eval 'focus' 'command -c cwindow'
+bind -c cwindow h eval 'focus down' 'command -c cwindow'
+bind -c cwindow l eval 'focus up' 'command -c cwindow'
+bind -c cwindow j eval 'focus down' 'command -c cwindow'
+bind -c cwindow k eval 'focus up' 'command -c cwindow'
+bind -c cwindow t eval 'focus top' 'command -c cwindow'
+bind -c cwindow b eval 'focus bottom' 'command -c cwindow'
+
+# window resize
+#bind \^ resize
+#bind r eval 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize j eval 'resize +1' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize k eval 'resize -1' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize J eval 'resize +10' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize K eval 'resize -10' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 1 eval 'resize 10' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 2 eval 'resize 20' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 3 eval 'resize 30' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 4 eval 'resize 40' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 5 eval 'resize 50' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 6 eval 'resize 60' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 7 eval 'resize 70' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 8 eval 'resize 80' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 9 eval 'resize 90' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize 0 eval 'resize 100' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize = eval 'resize =' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize m eval 'resize min' 'echo "Resize region:"' 'command -c cresize'
+#bind -c cresize x eval 'resize max' 'echo "Resize region:"' 'command -c cresize'
