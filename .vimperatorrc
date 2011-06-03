@@ -1,0 +1,219 @@
+"+----------------------------------------------------------------------------------------+
+" base settings
+"+----------------------------------------------------------------------------------------+
+
+set titlestring="Firefox"
+set gui=nonavigation,nomenu,addons,nobookmarks
+"set guioptions=rbD
+set hlsearch
+set visualbell
+"set wildoptions=auto
+set editor=gvim
+"set hintchars="jfkdlsurieowvncm"
+
+"set complete=ltD
+
+set focuscontent
+set history=10000
+
+
+"+----------------------------------------------------------------------------------------+
+" styles
+"+----------------------------------------------------------------------------------------+
+
+" status bar
+"hi StatusLine color: #FFF; background: #000; font-weight: normal; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace; margin: 0px 0px 0px 0px;
+
+" command line
+"hi CmdLine color: #000; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace; padding: 2px;
+"hi Normal color: #000; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+"hi InfoMsg color: #000; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+"hi ModeMsg color: #000; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+"hi MoreMsg color: #000; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+"hi ErrorMsg color: #FFF; background: #F00; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+"hi LineNr color: #F00; background: #FFF; font-size: 9pt; font-family: Menlo, Consolas, Monaco, monospace;
+
+" complete
+"hi CompItem[selected] background: #99ccff;
+
+" hint 6ba7ef
+"hi HintElem background-color: #fffac6; border-radius: 2px;
+"hi Hint font-family: "Lucida Grande", "Segoe UI", sans-serif; font-size: 11px; font-weight: bold; background: -moz-linear-gradient(top, #4985FF, #3163AA); text-shadow: 0 1px #1D3C66; text-transform: uppercase; color: white; background-color: red; padding: 2px 5px; border-radius: 3px; border: 1px solid #3366AD;
+
+colorscheme hoge
+"+----------------------------------------------------------------------------------------+
+" keymap (Normal Mode)
+"+----------------------------------------------------------------------------------------+
+
+" j/k/h/l for seven times
+nnoremap j 7j
+nnoremap k 7k
+nnoremap h 7h
+nnoremap l 7l
+
+" tab move with C-h and C-l
+nnoremap <C-h> <C-p>
+nnoremap <C-l> <C-n>
+
+" show undo buffer
+nnoremap U :u<Space>
+
+" close other tabs
+nnoremap <A-d> :tabonly<CR>
+
+" restart firefox
+nnoremap <A-r> :restart<CR>
+
+" print current page
+nnoremap <A-p> :dialog print<CR>
+
+" show dialog
+nnoremap <A-s> :dialog preferences<CR>
+
+" show addons
+nnoremap <A-a> :addon<CR>
+
+" source
+nnoremap ,v :source ~/.vimperatorrc<CR>
+
+"+----------------------------------------------------------------------------------------+
+" keymap (Command Mode)
+"+----------------------------------------------------------------------------------------+
+
+cnoremap <C-m> <CR>
+cnoremap <C-h> <BS>
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+
+
+"+----------------------------------------------------------------------------------------+
+" keymap (Input Mode)
+"+----------------------------------------------------------------------------------------+
+
+inoremap <C-m> <CR>
+inoremap <C-h> <BS>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
+
+"+----------------------------------------------------------------------------------------+
+" qmarks
+"+----------------------------------------------------------------------------------------+
+
+qmark g http://google.co.jp/
+qmark r http://www.google.co.jp/reader/
+qmark c https://www.google.com/calendar
+qmark e https://appengine.google.com/
+
+qmark t https://twitter.com/
+qmark F http://favotter.net/user/wataru420
+qmark f http://www.facebook.com/
+qmark y http://www.youtube.com/
+qmark n http://www.nicovideo.jp/
+qmark k http://kakaku.com/
+qmark m http://mixi.jp/home.pl
+
+qmark a http://www.ameba.jp/
+qmark p http://pigg.ameba.jp/
+
+qmark d javascript:(function(){f='http://www.delicious.com/save?url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title)+'&v=5&';a=function(){if(!window.open(f+'noui=1&jump=doclose','deliciousuiv5','location=yes,links=no,scrollbars=no,toolbar=no,width=550,height=550'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()
+qmark h javascript:window.location='http://b.hatena.ne.jp/add?mode=confirm&title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href);
+
+"+----------------------------------------------------------------------------------------+
+" settings for plugins
+"+----------------------------------------------------------------------------------------+
+
+" set mapleader
+let mapleader=','
+
+
+" for twittperator.js
+nnoremap <Leader>t :tw<Space>
+nnoremap <Leader>T :tw!<Space>
+nnoremap <Leader>@ :tw!@<CR>
+
+let g:twittperator_use_chirp = 1
+
+
+" for tombloo.js
+"nnoremap <Leader>l :tombloo Link
+"vnoremap <Leader>q :tombloo Quote
+
+
+" for multi_requester.js
+nnoremap <Leader>a :mr alc<Space>
+
+nnoremap <Leader>mt :mr<Space>twitter-search-pcod-no-jp<Space>
+nnoremap <Leader>mT :mr<Space>twitter-search-pcod-no-jp<Space>["wataru420"]<CR>
+nnoremap <Leader>mf :mr<Space>favotter-new<Space> wataru420 <CR>
+nnoremap <Leader>mF :mr<Space>favotter-new<Space>
+
+
+" for append_anchor.js
+let g:auto_append_anchor = "true"
+
+
+" for hint-tombloo.js
+"let g:hint_tombloo_key = 'r'
+
+
+" for open-frame.js
+nnoremap <Leader>f :tabopenframe<CR>
+
+
+" for ldrize_cooperation.js
+"let g:ldrc_intelligence_bind = "true"
+"let:g:ldrc_skip = "0.25"
+
+
+" for direct_bookmark.js
+"let g:direct_sbm_use_services_by_post = 'd'
+"let g:direct_sbm_use_services_by_tag = 'd'
+"nnoremap p :sbm[
+
+
+" for delicious_search.js
+nnoremap s :delicioussearch -tags<Space>
+nnoremap q :delicioussearch -query<Space>
+
+
+" for feedSomeKeys2.js
+"autocmd LocationChange .* :fmapc
+"autocmd LocationChange mail\\.google\\.com/mail :fmap! c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+"autocmd LocationChange mail\\.google\\.com/mail/.*/[0-9a-f]+$ :fmap! c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+"autocmd LocationChange 'www\.google\.co\.jp/reader' :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+"autocmd LocationChange 'www\.google\.com/calendar/' :fmap! -vkey -event keydown z t a w m x c e <Del> / + q s ?
+
+
+" for removetabs.js
+"noremap <A-h> :removetabsleft<CR>
+"noremap <A-l> :removetabsright<CR>
+
+
+"+----------------------------------------------------------------------------------------+
+" other settings
+"+----------------------------------------------------------------------------------------+
+
+" for verttabbar
+"set! browser.tabs.closeButton=2
+"set! verttabbar.width=100
+
+
+" inspect mode hint
+js <<EOM
+hints.addMode('i', 'inspectThis', function(elem){ inspectDOMNode(elem) }, function() '//*');
+commands.addUserCommand(['setInspectionXPath', 'six'], 'Set a XPath in the Hints Mode of Inspection', function(args){
+    hints.addMode('i', 'inspectThis', function(elem){ inspectDOMNode(elem) }, function() args.string);
+}, {}, true);
+EOM
+
+
+" read local conf
+source! ~/.vimperatorrc.local
+
+"complete!
+echo ".vimperatorrc sourced"
