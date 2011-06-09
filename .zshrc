@@ -1,12 +1,27 @@
 export LANG=ja_JP.UTF-8
 
 #tmux
-alias tmux="/usr/local/bin/tmux"
-alias tmuxa="/usr/local/bin/tmux a -t"
+case "${OSTYPE}" in
+linux*)
+	alias tmux="/usr/local/bin/tmux"
+	alias tmuxa="/usr/local/bin/tmux a -t"
+	;;
+esac
 
 #lsの拡張
-alias ls="ls --color=auto"
-alias ll="ls -alF --color=auto"
+case "${OSTYPE}" in
+frebsd*|darwin*)
+	alias ls="ls -G -w"
+	;;
+linux*)
+	eval `dircolors`
+	alias ls="ls --color"
+	;;
+esac
+
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -al"
 
 #-iで確認 -vで詳細情報の表示
 alias cp='cp -iv'
@@ -78,7 +93,6 @@ setopt print_eight_bit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
-eval `dircolors`
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 # kill の候補にも色付き表示
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
