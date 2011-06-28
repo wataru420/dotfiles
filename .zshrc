@@ -6,6 +6,9 @@ linux*)
 	alias tmux="/usr/local/bin/tmux"
 	alias tmuxa="/usr/local/bin/tmux a -t"
 	;;
+frebsd*|darwin*)
+	alias tmuxa="tmux a -t"
+	;;
 esac
 
 #lsの拡張

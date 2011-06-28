@@ -38,7 +38,6 @@ set wrap        "画面幅で折り返す
 set tabstop=4 "タブの空白数
 set shiftwidth=4 "インデントの空白数
 
-filetype plugin indent on "ファイル・タイプ認識を有効にする
 
 "検索関連
 set ignorecase smartcase " 大文字が含まれている時のみ、大文字と小文字が区別される
@@ -97,3 +96,15 @@ augroup BufferAu
     " カレントディレクトリを自動的に移動
     autocmd BufNewFile,BufRead,BufEnter * if isdirectory(expand("%:p:h")) && bufname("%") !~ "NERD_tree" | cd %:p:h | endif
 augroup END
+
+"for vundle
+filetype off
+
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'scala'
+Bundle 'autoComplPop'
+
+filetype plugin indent on "ファイル・タイプ認識を有効にする
