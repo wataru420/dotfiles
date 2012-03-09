@@ -1,3 +1,11 @@
+"           __                              
+"    __  __ /\_\     ___ ___    _ __   ___   
+"   /\ \/\ \\/\ \  /' __` __`\ /\`'__\/'___\ 
+"   \ \ \_/ |\ \ \ /\ \/\ \/\ \\ \ \//\ \__/ 
+"    \ \___/  \ \_\\ \_\ \_\ \_\\ \_\\ \____\
+"     \/__/    \/_/ \/_/\/_/\/_/ \/_/ \/____/
+"   
+
 set nocompatible "最初に必ず書く
 set shellslash   "Windowsでディレクトリパスに/利用
 set clipboard=unnamed "クリップボード連携for windows
@@ -83,6 +91,8 @@ noremap <CR> o<ESC>
 highlight ZenkakuSpace guibg=red
 match ZenkakuSpace /　/
 
+set cmdheight=3
+
 augroup BufferAu
     autocmd!
     " カレントディレクトリを自動的に移動
@@ -109,8 +119,12 @@ if v:version >= 700
 	call vundle#rc()
 
 	Bundle 'scrooloose/nerdtree'
+	Bundle 'taglist.vim'
 	Bundle 'scala'
 	Bundle 'git://github.com/t9md/vim-textmanip'
+    Bundle 'git://github.com/Shougo/unite.vim'
+    Bundle 'git://github.com/mattn/gist-vim.git'
+    let g:github_token = '4151647577d19ac7624d99fdaf50f85c'
 	if v:version >= 702
 		Bundle 'git://github.com/Shougo/neocomplcache.git'
 		" neocomplcache
