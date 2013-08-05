@@ -7,6 +7,7 @@
 "   
 
 set nocompatible "最初に必ず書く
+
 set shellslash   "Windowsでディレクトリパスに/利用
 set clipboard=unnamed "クリップボード連携for windows
 "set t_Co=256
@@ -112,25 +113,41 @@ if v:version >= 700
 	":grep:make実行後、自動的にQuickFixウィンドウを開く
 	au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
-	"for vundle
-	filetype off
 
-	set rtp+=~/.vim/vundle.git/
-	call vundle#rc()
+	"for neovundle
+	if has('vim_starting')
+	  set rtp+=~/.vim/bundle/neobundle.vim/
+	endif
+	
+	call neobundle#rc()
 
-	Bundle 'scrooloose/nerdtree'
-	Bundle 'taglist.vim'
-	Bundle 'scala'
-	Bundle 'git://github.com/t9md/vim-textmanip'
-    Bundle 'git://github.com/Shougo/unite.vim'
-    Bundle 'git://github.com/mattn/gist-vim.git'
+	" Let NeoBundle manage NeoBundle
+	NeoBundleFetch 'Shougo/neobundle.vim'
+	
+	" Recommended to install
+	" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+	NeoBundle 'Shougo/vimproc'
+	
+	NeoBundle 'scrooloose/nerdtree'
+	NeoBundle 'taglist.vim'
+	" NeoBundle 'scala'
+	
+	NeoBundle 'bling/vim-airline'
+    let g:airline_theme='light'
+	let g:airline_powerline_fonts=0
+
+	NeoBundle 'git://github.com/t9md/vim-textmanip'
+    NeoBundle 'git://github.com/Shougo/unite.vim'
+    NeoBundle 'git://github.com/mattn/gist-vim.git'
     let g:github_token = '4151647577d19ac7624d99fdaf50f85c'
 	if v:version >= 702
-		Bundle 'git://github.com/Shougo/neocomplcache.git'
+		NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 		" neocomplcache
 		let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 	endif
 	filetype plugin indent on "ファイル・タイプ認識を有効にする
+
+	NeoBundleCheck
 
 	"NERDtreeで隠しファイルを表示する
 	let NERDTreeShowHidden=1
@@ -147,3 +164,14 @@ if v:version >= 700
 	nmap <M-d> <Plug>(textmanip-duplicate-down)
 
 endif
+
+augroup MyDev
+	autocmd!
+	autocmd FileType html,htm set sw=2 | set ts=2 | set sts=2 | set et | set iskeyword+=/
+	autocmd FileType cs set sw=2 | set ts=2 | set sts=2 | set et | set iskeyword+=,_,#
+	autocmd FileType jade set noet | set iskeyword+=-,_,#
+	autocmd FileType javascript set sw=4 | set ts=4 | set sts=4 | set et
+	autocmd FileType javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+	autocmd FileType snippet set noet
+	autocmd BufRead,BufNewFile *.json set filetype=json
+augroup END
