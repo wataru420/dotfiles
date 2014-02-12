@@ -24,11 +24,14 @@ install tmux
 install w3m
 install wget
 install zsh
+install mysql
+install memcached
 
 # .dmg
+cask install java
 cask install alfred
 cask install bettertouchtool
-cask install chromium
+# cask install chromium
 cask install firefox
 cask install google-chrome
 cask install hipchat
@@ -42,6 +45,8 @@ cask install iterm2
 cask install xtrafinder
 cask install eclipse-ide
 cask install tunnelblick
+cask install lightpaper
+cask install bathyscaphe 
 
 # 420
 cask install google-japanese-input
