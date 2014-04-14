@@ -7,6 +7,7 @@ update
 # Add Repository
 tap Homebrew/homebrew-versions || true
 tap phinze/homebrew-cask || true
+tap homebrew/binary || true
 tap wataru420/homebrew-420 || true
 
 # Packages
@@ -26,7 +27,10 @@ install wget
 install zsh
 install mysql
 install memcached
-
+install docker boot2docker
+install jmeter
+install md5sha1sum
+install redis
 # .dmg
 cask install java
 cask install alfred
@@ -47,6 +51,7 @@ cask install eclipse-ide
 cask install tunnelblick
 cask install lightpaper
 cask install bathyscaphe 
+cask install unity3d
 
 # 420
 cask install google-japanese-input
