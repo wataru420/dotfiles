@@ -147,6 +147,24 @@ if v:version >= 700
 	endif
 	filetype plugin indent on "ファイル・タイプ認識を有効にする
 
+	NeoBundle 'kchmck/vim-coffee-script'
+	" vimにcoffeeファイルタイプを認識させる
+	au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+	" インデントを設定
+	autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+	NeoBundle 'nathanaelkane/vim-indent-guides'
+    " インデントの深さに色を付ける
+    let g:indent_guides_start_level=2
+    let g:indent_guides_auto_colors=0
+    let g:indent_guides_enable_on_vim_startup=0
+    let g:indent_guides_guide_size=1
+    
+	hi IndentGuidesOdd  ctermbg=white
+	hi IndentGuidesEven ctermbg=lightgrey
+    au FileType coffee,ruby,javascript,python IndentGuidesEnable
+    nmap <silent><Leader>ig <Plug>IndentGuidesToggle
+
 	NeoBundleCheck
 
 	"NERDtreeで隠しファイルを表示する
